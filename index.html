@@ -261,6 +261,30 @@ tr.total td.num{color:#fff}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
+/* ============ PAGE TRANSITION (slideshow) ============ */
+.view.slide-in-right{animation:slideInR .5s cubic-bezier(.22,1,.36,1)}
+.view.slide-in-left{animation:slideInL .5s cubic-bezier(.22,1,.36,1)}
+@keyframes slideInR{from{opacity:0;transform:translateX(44px)}to{opacity:1;transform:none}}
+@keyframes slideInL{from{opacity:0;transform:translateX(-44px)}to{opacity:1;transform:none}}
+
+/* ============ SCROLL REVEAL ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.seen{opacity:1;transform:none}
+
+/* ============ PRESENTATION NAV ============ */
+.prez{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:4px;
+  background:rgba(12,42,24,.92);backdrop-filter:blur(10px);border:1px solid rgba(143,194,120,.25);border-radius:999px;
+  padding:6px 8px;box-shadow:0 10px 30px rgba(12,42,24,.3)}
+.prez button{appearance:none;border:none;background:transparent;color:#dfe9da;width:38px;height:38px;border-radius:50%;
+  cursor:pointer;font-size:17px;display:grid;place-items:center;transition:all .15s}
+.prez button:hover:not(:disabled){background:rgba(143,194,120,.2);color:#fff}
+.prez button:disabled{opacity:.3;cursor:default}
+.prez .dots{display:flex;gap:6px;padding:0 6px}
+.prez .pd{width:8px;height:8px;border-radius:50%;background:rgba(223,233,218,.35);cursor:pointer;transition:all .2s}
+.prez .pd.on{background:var(--moss);width:22px;border-radius:5px}
+.prez .pz-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--moss);padding:0 6px;white-space:nowrap;min-width:90px;text-align:center}
+@media(max-width:860px){.prez{bottom:14px}.prez .pz-label{display:none}}
+
 /* ============ HOME / BERANDA ============ */
 .prose p{font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:14px;text-align:justify}
 .prose p:last-child{margin-bottom:0}
@@ -293,6 +317,17 @@ tr.total td.num{color:#fff}
 .gauge-c svg{width:170px;height:auto}
 .polar-wrap{display:flex;justify-content:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--line2)}
 .polar-wrap svg{max-width:380px;width:100%;height:auto}
+.sccm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:13px}
+.sccm-c{background:var(--paper2);border:1px solid var(--line2);border-radius:14px;padding:18px;text-align:center;transition:all .18s}
+.sccm-c:hover{border-color:var(--leaf);transform:translateY(-3px);box-shadow:var(--shadow)}
+.sccm-c .si{font-size:28px;display:block;margin-bottom:10px}
+.sccm-c b{display:block;font-size:14px;color:var(--canopy);font-weight:600;margin-bottom:5px}
+.sccm-c span{font-size:12px;color:var(--muted);line-height:1.45}
+.sccm-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:13px;margin-top:14px;padding-top:18px;border-top:1px solid var(--line2)}
+.ss{text-align:center}
+.ss .ssn{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--forest2);line-height:1}
+.ss .ssn small{font-size:14px;color:var(--muted)}
+.ss .ssl{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.4}
 </style>
 </head>
 <body>
@@ -357,9 +392,11 @@ tr.total td.num{color:#fff}
             <div class="panel-head"><div><h3>Tentang Hutan Desa Nanga Lauk</h3><div class="sub">Profil kawasan dan dasar hukum pengelolaan</div></div></div>
             <div class="prose">
               <p>Hutan Desa di Desa Nanga Lauk dikelola langsung oleh masyarakat setempat berdasarkan hak kelola selama <b>35 tahun</b> atas wilayah seluas <b>1.430 hektar</b>, sebagaimana ditetapkan dalam Keputusan Menteri Lingkungan Hidup dan Kehutanan Nomor <b>SK.685/Menlhk-PSKL/PKPS/PSL.0/2/2017</b>. Keputusan ini membuka peluang bagi warga untuk mengelola dan memanfaatkan potensi sumber daya hutan secara berkelanjutan — kawasan yang sebelumnya hanya berstatus hutan lindung kini menjadi ruang penghidupan yang dikelola bersama.</p>
-              <p>Di luar kawasan Hutan Desa, wilayah administratif Desa Nanga Lauk juga mencakup <b>8.618 hektar</b> rawa gambut dan hutan riparian yang saat ini berstatus Hutan Produksi Terbatas Nanga Lauk (HPTNL). Masyarakat berinisiatif memperluas hak kelola dengan mengintegrasikan HPTNL ke dalam kawasan Hutan Desa. Sebagian kawasan ini direncanakan menjadi <b>zona konservasi</b> yang, bersama Hutan Desa Nanga Lauk, dipadukan dalam proyek <b>Plan Vivo</b>. Langkah ini sekaligus menjadi upaya antisipatif terhadap kemungkinan terbitnya izin konsesi baru, dengan mengusulkan area tersebut menjadi bagian dari Hutan Desa.</p>
+              <p>Di luar kawasan Hutan Desa, wilayah administratif Desa Nanga Lauk juga mencakup <b>8.618 hektar</b> rawa gambut dan hutan riparian yang saat ini berstatus Hutan Produksi Terbatas Nanga Lauk (HPTNL). Masyarakat berinisiatif memperluas hak kelola dengan mengintegrasikan HPTNL ke dalam kawasan Hutan Desa. Sebagian kawasan ini direncanakan menjadi <b>zona konservasi</b> yang, bersama Hutan Desa Nanga Lauk, diintegrasikan dalam skema kerja sama konservasi. Langkah ini sekaligus menjadi upaya antisipatif terhadap kemungkinan terbitnya izin konsesi baru, dengan mengusulkan area tersebut menjadi bagian dari Hutan Desa.</p>
               <p>Mengacu pada Peraturan Menteri Lingkungan Hidup dan Kehutanan Nomor 9 Tahun 2021 tentang Pengelolaan Perhutanan Sosial, Hutan Desa didefinisikan sebagai hutan negara yang dikelola oleh desa untuk mendukung kesejahteraan masyarakat. Prinsipnya adalah memberikan akses kepada masyarakat lokal — melalui lembaga desa — untuk memanfaatkan sumber daya hutan secara bijak dan berkelanjutan, dengan tujuan utama meningkatkan kesejahteraan warga dari waktu ke waktu.</p>
-              <p>Di Desa Nanga Lauk, pengelolaan kawasan Hutan Desa seluas <b>±1.430 hektar</b> diemban oleh <b>Lembaga Pengelola Hutan Desa (LPHD) Nanga Lauk</b> — dikenal pula sebagai LPHD Lauk Bersatu. Pemanfaatan ekonomi lestari dijalankan melalui <b>lima Kelompok Usaha Perhutanan Sosial (KUPS)</b>: Madu, Ikan, Karet, Ekowisata, dan Rotan — yang seluruhnya telah meraih <b>status Perak</b> dalam penilaian GOKUPS Kementerian Kehutanan Republik Indonesia. Di sampingnya membentang kawasan Hutan Produksi Terbatas seluas <b>±9.169 hektar</b> yang didominasi ekosistem hutan rawa gambut — salah satu benteng karbon dan keanekaragaman hayati terpenting di lanskap Kapuas Hulu.</p>
+              <p>Di Desa Nanga Lauk, pengelolaan kawasan Hutan Desa seluas <b>±1.430 hektar</b> diemban oleh <b>Lembaga Pengelola Hutan Desa (LPHD) Lauk Bersatu</b>. Pemanfaatan ekonomi lestari dijalankan melalui <b>lima Kelompok Usaha Perhutanan Sosial (KUPS)</b>: Madu, Ikan, Karet, Ekowisata, dan Rotan — yang seluruhnya telah meraih <b>status Perak</b> dalam penilaian GOKUPS Kementerian Kehutanan Republik Indonesia. Di sampingnya membentang kawasan Hutan Produksi Terbatas seluas <b>±9.169 hektar</b> yang didominasi ekosistem hutan rawa gambut — salah satu benteng karbon dan keanekaragaman hayati terpenting di lanskap Kapuas Hulu.</p>
+              <p>Program ini diinisiasi oleh <b>PRCF Indonesia</b> dengan mengacu pada tiga pilar utama perhutanan sosial: penguatan kapasitas kelembagaan, perlindungan dan rehabilitasi kawasan hutan, serta pemanfaatan hasil hutan bukan kayu. Kerja sama dijalankan melalui skema <b>Sustainable Commodities Conservation Mechanism (SCCM)</b> dengan pendekatan <b>Imbal Jasa Ekosistem (Payment for Ecosystem Services / PES)</b>. Indikator keberhasilannya tidak hanya berfokus pada aspek karbon, tetapi juga menjamin kebermanfaatan proyek bagi komunitas lokal, konservasi keanekaragaman hayati, serta kontribusi terhadap pengendalian perubahan iklim global.</p>
+              <p>Imbal Jasa Ekosistem (PES) menjadi strategi pengelolaan lingkungan sekaligus peningkatan ekonomi masyarakat di tingkat tapak — mereka yang sehari-hari bersentuhan langsung dengan hutan. Melalui Perhutanan Sosial, pemerintah melalui Kementerian Lingkungan Hidup dan Kehutanan memberikan hak pengelolaan kepada masyarakat dengan mengedepankan prinsip pemberdayaan, keseimbangan hak dan kewajiban, keberlanjutan lingkungan, kesejahteraan sosial-ekonomi, serta partisipasi dan kolaborasi. Pengembangan ekonomi lokal melalui pemanfaatan sumber daya hutan — sesuai aturan dan kearifan setempat — menjadi salah satu hak pemegang izin untuk meningkatkan kesejahteraan sekaligus mendorong mereka menjaga hutan sebagai sumber kehidupan. Pengelolaan ini tidak dapat berjalan sendiri; ia memerlukan dukungan dan kolaborasi pihak lain, salah satunya melalui pendekatan skema PES seperti yang dijalankan di Desa Nanga Lauk.</p>
             </div>
           </div>
 
@@ -375,8 +412,7 @@ tr.total td.num{color:#fff}
                 <div class="fact"><span class="fl">Kawasan HPT</span><span class="fv">±9.169 ha</span></div>
                 <div class="fact"><span class="fl">Hak kelola</span><span class="fv">35 tahun</span></div>
                 <div class="fact"><span class="fl">Dasar hukum</span><span class="fv">SK.685/Menlhk/2017</span></div>
-                <div class="fact"><span class="fl">Pengelola</span><span class="fv">LPHD Nanga Lauk</span></div>
-                <div class="fact"><span class="fl">Skema karbon</span><span class="fv">Plan Vivo</span></div>
+                <div class="fact"><span class="fl">Pengelola</span><span class="fv">LPHD Lauk Bersatu</span></div>
                 <div class="fact"><span class="fl">KUPS</span><span class="fv">5 unit · Perak</span></div>
               </div>
             </div>
@@ -408,6 +444,19 @@ tr.total td.num{color:#fff}
             <span><i style="background:#1f6b1f"></i>Hutan lindung (zona konservasi)</span>
             <span><i style="background:#9bd62a"></i>Hutan produksi terbatas</span>
             <span><i style="background:#111;border:1px solid #888"></i>Batas Hutan Desa 1.430 ha</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Skema Program — SCCM</h3><div class="sub">Sustainable Commodities Conservation Mechanism · diinisiasi PRCF Indonesia</div></div><span class="tag">Imbal Jasa Ekosistem (PES)</span></div>
+          <div class="sccm-grid">
+            <div class="sccm-c"><span class="si">🏛️</span><b>Penguatan Kelembagaan</b><span>Peningkatan kapasitas LPHD dan tata kelola</span></div>
+            <div class="sccm-c"><span class="si">🛡️</span><b>Perlindungan &amp; Rehabilitasi</b><span>Patroli, pencegahan kebakaran, dan pemulihan kawasan</span></div>
+            <div class="sccm-c"><span class="si">🌿</span><b>Hasil Hutan Bukan Kayu</b><span>Madu, rotan, dan komoditas lestari lainnya</span></div>
+          </div>
+          <div class="sccm-stats">
+            <div class="ss"><div class="ssn">PES</div><div class="ssl">Imbal Jasa Ekosistem</div></div>
+            <div class="ss"><div class="ssn">4</div><div class="ssl">Indikator: karbon, komunitas, biodiversitas, iklim</div></div>
           </div>
         </div>
 
@@ -592,6 +641,7 @@ tr.total td.num{color:#fff}
 
         <div class="panel">
           <div class="panel-head"><div><h3>Retensi Peserta</h3><div class="sub">Berapa tahun tiap peserta aktif dalam program</div></div><span class="tag">805 individu</span></div>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:16px;background:var(--paper2);border:1px solid var(--line2);border-radius:11px;padding:13px 16px">Setiap peserta dikelompokkan menurut lama keterlibatannya. Dari <b>805 peserta</b>, sebanyak <b>234 orang aktif dua tahun atau lebih</b>, dan <b>18 orang konsisten terlibat sepanjang enam tahun</b> — menjadi tulang punggung keberlanjutan program.</p>
           <div id="retentionChart"></div>
         </div>
 
@@ -648,6 +698,13 @@ tr.total td.num{color:#fff}
   </div>
 </div>
 
+<div class="prez" id="prez">
+  <button id="prezPrev" title="Halaman sebelumnya (←)">‹</button>
+  <div class="pz-label" id="prezLabel">Beranda</div>
+  <div class="dots" id="prezDots"></div>
+  <button id="prezNext" title="Halaman berikutnya (→)">›</button>
+</div>
+
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose">×</button>
   <button class="lb-nav lb-prev" id="lbPrev">‹</button>
@@ -672,21 +729,80 @@ window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lau
   const CYCLE={Y1:'2019/20',Y2:'2020/21',Y3:'2021/22',Y4:'2022/23',Y5:'2023/24',Y6:'2024/25'};
   const VIEWNAMES={home:'Beranda',overview:'Ringkasan Eksekutif',activity:'Kegiatan & Jangkauan',gender:'Analisis Gender',growth:'Pertumbuhan & Retensi',registry:'Registry Peserta',docs:'Dokumentasi'};
 
-  /* ---------- navigation ---------- */
+  /* ---------- navigation + slideshow ---------- */
+  const ORDER=['home','overview','activity','gender','growth','registry','docs'];
+  let curView='home';
   function go(view){
+    if(!ORDER.includes(view)) return;
+    const dir = ORDER.indexOf(view) >= ORDER.indexOf(curView) ? 'right' : 'left';
+    curView=view;
     $$('.sb-item').forEach(x=>x.classList.toggle('on',x.dataset.view===view));
-    $$('.view').forEach(v=>v.classList.toggle('on',v.id===view));
+    $$('.view').forEach(v=>{
+      const on=v.id===view;
+      v.classList.remove('slide-in-right','slide-in-left');
+      v.classList.toggle('on',on);
+      if(on){
+        void v.offsetWidth; // reflow to restart animation
+        v.classList.add(dir==='right'?'slide-in-right':'slide-in-left');
+        revealInit(v);
+      }
+    });
     const cv=$('#crumbView'); if(cv) cv.textContent=VIEWNAMES[view]||'';
+    updatePrez();
     window.scrollTo({top:0,behavior:'smooth'});
     $('#mobileNav') && $('#mobileNav').classList.remove('open');
   }
   // build mobile nav by cloning sidebar items
   const mnav=$('#mobileNav');
-  $$('.sb-nav .sb-item').forEach(it=>{
-    const c=it.cloneNode(true); mnav.appendChild(c);
-  });
+  $$('.sb-nav .sb-item').forEach(it=>{const c=it.cloneNode(true);mnav.appendChild(c);});
   $$('[data-view]').forEach(it=>it.addEventListener('click',()=>go(it.dataset.view)));
   $('#mbMenu') && $('#mbMenu').addEventListener('click',()=>$('#mobileNav').classList.toggle('open'));
+
+  /* presentation nav */
+  function buildPrez(){
+    const d=$('#prezDots'); if(!d) return; d.innerHTML='';
+    ORDER.forEach(v=>{const b=document.createElement('div');b.className='pd';b.title=VIEWNAMES[v];b.addEventListener('click',()=>go(v));d.appendChild(b);});
+  }
+  function updatePrez(){
+    const i=ORDER.indexOf(curView);
+    $('#prezPrev')&&($('#prezPrev').disabled=i<=0);
+    $('#prezNext')&&($('#prezNext').disabled=i>=ORDER.length-1);
+    $('#prezLabel')&&($('#prezLabel').textContent=`${i+1}/${ORDER.length} · ${VIEWNAMES[curView]}`);
+    $$('#prezDots .pd').forEach((p,k)=>p.classList.toggle('on',k===i));
+  }
+  $('#prezPrev')&&$('#prezPrev').addEventListener('click',()=>{const i=ORDER.indexOf(curView);if(i>0)go(ORDER[i-1]);});
+  $('#prezNext')&&$('#prezNext').addEventListener('click',()=>{const i=ORDER.indexOf(curView);if(i<ORDER.length-1)go(ORDER[i+1]);});
+  document.addEventListener('keydown',e=>{
+    if($('#lightbox')&&$('#lightbox').classList.contains('on'))return;
+    const tag=(e.target.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea')return;
+    const i=ORDER.indexOf(curView);
+    if(e.key==='ArrowRight'&&i<ORDER.length-1)go(ORDER[i+1]);
+    if(e.key==='ArrowLeft'&&i>0)go(ORDER[i-1]);
+  });
+  buildPrez();updatePrez();
+
+  /* scroll reveal */
+  let revealObs=null;
+  if('IntersectionObserver' in window){
+    revealObs=new IntersectionObserver((ents)=>{
+      ents.forEach(en=>{if(en.isIntersecting){en.target.classList.add('seen');revealObs.unobserve(en.target);}});
+    },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  }
+  function revealInit(scope){
+    const root=scope||document;
+    const items=root.querySelectorAll('.panel, .stat, .hero, .vhead, .ins, .gcard');
+    items.forEach((el,i)=>{
+      if(el.dataset.rev) {el.classList.remove('seen');}
+      el.classList.add('reveal');el.dataset.rev='1';
+      if(revealObs){revealObs.observe(el);}
+      else {el.classList.add('seen');}
+    });
+    // fallback: ensure visible after a moment
+    setTimeout(()=>{root.querySelectorAll('.reveal:not(.seen)').forEach(el=>{
+      const r=el.getBoundingClientRect();if(r.top<window.innerHeight)el.classList.add('seen');
+    });},120);
+  }
 
   /* ---------- count-up animation ---------- */
   function animateCounts(){
@@ -854,7 +970,7 @@ window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lau
   // Horizontal bar (retention / female %)
   function hbarPct(mount, data, opts){
     opts=opts||{};
-    const W=560, rowH=opts.rowH||40, padL=opts.padL||52, padR=56, padT=10;
+    const W=560, rowH=opts.rowH||40, padL=opts.padL||52, padR=opts.padR||56, padT=10;
     const H=padT*2+data.length*rowH;
     const cw=W-padL-padR;
     const max=opts.max||Math.max(...data.map(d=>d.v))*1.1;
@@ -1135,7 +1251,7 @@ window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lau
   const C=M.cumnew;
   areaChart($('#cumChart'), C.map(r=>({k:r.y,v:r.cum})), {c1:'#3a8a5b'});
   barChart($('#newChart'), C.map(r=>({k:r.y,v:r.new})), {c1:'#e0bd6a',c2:'#a8862f'});
-  hbarPct($('#retentionChart'), M.retention.map((v,i)=>({k:(i+1)+' thn',v})), {max:Math.max(...M.retention)*1.1,fmt:v=>nf(v)+' org',rowH:40,padL:60});
+  hbarPct($('#retentionChart'), M.retention.map((v,i)=>({k:(i+1)+' thn',v})), {max:Math.max(...M.retention)*1.1,fmt:v=>nf(v)+' org',rowH:40,padL:60,padR:80});
   // roles
   const rmax=Math.max(...M.topRoles.map(r=>r[1]));
   $('#roleBars').innerHTML=M.topRoles.map(r=>`<div class="rolerow"><div class="rl"><div class="fill" style="width:0" data-w="${Math.round(r[1]/rmax*100)}"></div><span>${esc(r[0])}</span></div><div class="rv">${r[1]}</div></div>`).join('');
@@ -1208,6 +1324,7 @@ window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lau
 
   /* kick off animations */
   animateCounts();
+  revealInit($('#home'));
 
   /* map zoom in lightbox */
   const mapImg=$('#mapImg');
