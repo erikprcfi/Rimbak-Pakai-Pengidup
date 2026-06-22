@@ -397,7 +397,6 @@ tr.total td.num{color:#fff}
                 <div class="kups-i"><span class="ki">🏞️</span><b>KUPS Ekowisata</b><span class="kbadge">PERAK</span></div>
                 <div class="kups-i"><span class="ki">🪢</span><b>KUPS Rotan</b><span class="kbadge">PERAK</span></div>
               </div>
-              <div class="gauges" id="kupsGauges"></div>
             </div>
           </div>
         </div>
@@ -1058,15 +1057,6 @@ window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lau
   if($('#heatChart')) heatmap($('#heatChart'), M.cats, M.catData, YEARS);
   if($('#bumpChart')) bumpChart($('#bumpChart'), M.cats, M.catData, YEARS);
   if($('#streamLegend')) $('#streamLegend').innerHTML=M.cats.map(c=>`<span><i style="background:${CATCOL[c]}"></i>${c}</span>`).join('');
-
-  // KUPS gauges
-  if($('#kupsGauges')){
-    const lv=['Biru','Perak','Emas','Platina'];
-    ['Madu','Ikan','Karet','Ekowisata','Rotan'].forEach(k=>{
-      const d=document.createElement('div');d.className='gauge-c';$('#kupsGauges').appendChild(d);
-      gauge(d,'KUPS '+k,1,lv);
-    });
-  }
 
   // activity year explorer (full list)
   let expYear='Y4', expTerm='';
