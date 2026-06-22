@@ -288,6 +288,11 @@ tr.total td.num{color:#fff}
 .kups-i .kbadge{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:1px;
   background:linear-gradient(135deg,#d8dde3,#aeb6bf);color:#3a434d;padding:3px 9px;border-radius:6px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.6);border:1px solid #c2c9d1}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line2)}
+.gauge-c{display:flex;justify-content:center}
+.gauge-c svg{width:170px;height:auto}
+.polar-wrap{display:flex;justify-content:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--line2)}
+.polar-wrap svg{max-width:380px;width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -337,7 +342,7 @@ tr.total td.num{color:#fff}
           <div style="position:relative;padding:48px 42px">
             <span class="hero-tag">◆ Lembaga Pengelola Hutan Desa Nanga Lauk · Kapuas Hulu, Kalimantan Barat</span>
             <h2>Hutan Desa Nanga Lauk</h2>
-            <p class="lead">Sebuah model pengelolaan hutan oleh masyarakat — menjaga 1.430 hektar hutan desa dan ribuan hektar rawa gambut, sambil membangun penghidupan yang lestari bagi masyarakat Desa Nanga Lauk.</p>
+            <p class="lead">Di jantung Kapuas Hulu, masyarakat Desa Nanga Lauk memegang mandat negara untuk menjaga 1.430 hektar hutan desa dan ekosistem rawa gambut di sekitarnya. Selama enam tahun, hak kelola ini diterjemahkan menjadi aksi nyata — patroli, rehabilitasi, dan ekonomi lestari — membuktikan bahwa konservasi dan kesejahteraan dapat tumbuh berdampingan, dipimpin langsung oleh masyarakat.</p>
             <div class="hero-kpis" style="margin-top:28px">
               <div class="hk"><div class="n">1.430<small> ha</small></div><div class="l">Luas Hutan Desa</div></div>
               <div class="hk"><div class="n">35<small> thn</small></div><div class="l">Hak kelola</div></div>
@@ -392,6 +397,7 @@ tr.total td.num{color:#fff}
                 <div class="kups-i"><span class="ki">🏞️</span><b>KUPS Ekowisata</b><span class="kbadge">PERAK</span></div>
                 <div class="kups-i"><span class="ki">🪢</span><b>KUPS Rotan</b><span class="kbadge">PERAK</span></div>
               </div>
+              <div class="gauges" id="kupsGauges"></div>
             </div>
           </div>
         </div>
@@ -424,7 +430,7 @@ tr.total td.num{color:#fff}
         <div class="hero">
           <span class="hero-tag">◆ Program Konservasi Hutan Desa · Kapuas Hulu</span>
           <h2>Enam tahun menjaga hutan bersama masyarakat.</h2>
-          <p class="lead">Rimbak Pakai Pengidup — "hutan untuk penghidupan" — adalah program pengelolaan hutan desa yang melibatkan 805 peserta dari masyarakat Desa Nanga Lauk dan para pemangku kepentingan terkait dalam kegiatan patroli, rehabilitasi, ekonomi lestari, dan penyadartahuan, sepanjang 2019 hingga 2025.</p>
+          <p class="lead">Rimbak Pakai Pengidup — "hutan untuk penghidupan" — adalah bukti enam tahun pengelolaan hutan berbasis masyarakat: 805 peserta, 368 kegiatan, dan partisipasi yang terus berlanjut lintas tahun. Dashboard ini menyajikan capaian itu secara transparan dan terverifikasi, dari tingkat program hingga nama setiap peserta.</p>
           <div class="hero-kpis">
             <div class="hk"><div class="n">368</div><div class="l">Kegiatan</div></div>
             <div class="hk"><div class="n">805</div><div class="l">Individu unik</div></div>
@@ -490,6 +496,24 @@ tr.total td.num{color:#fff}
           <div class="panel-head"><div><h3>Ragam Kegiatan per Tahun</h3><div class="sub">Sebaran kegiatan menurut jenis program</div></div></div>
           <div class="yr-picker" id="catYears" style="margin-bottom:18px"></div>
           <div class="catbars" id="catBars"></div>
+          <div class="polar-wrap"><div id="catPolar"></div></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Aliran Ragam Kegiatan Lintas Tahun</h3><div class="sub">Streamgraph — komposisi jenis kegiatan dari Tahun 1 hingga Tahun 6</div></div></div>
+          <div id="streamChart" style="overflow-x:auto"></div>
+          <div class="legend" id="streamLegend"></div>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <div class="panel-head"><div><h3>Peta Intensitas Kegiatan</h3><div class="sub">Heatmap jenis kegiatan × tahun</div></div></div>
+            <div id="heatChart" style="overflow-x:auto"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h3>Pergeseran Prioritas Kegiatan</h3><div class="sub">Bump chart — peringkat jenis kegiatan tiap tahun</div></div></div>
+            <div id="bumpChart" style="overflow-x:auto"></div>
+          </div>
         </div>
 
         <div class="panel">
@@ -849,9 +873,147 @@ window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lau
     });
   }
 
-  /* ====================================================
-     OVERVIEW
-  ==================================================== */
+  /* ===== ADVANCED VISUALS ===== */
+  const CATCOL={Patroli:'#16412a',Pelatihan:'#2f7d51',Rapat:'#4fa36c',Monitoring:'#7fae6e',Penyadartahuan:'#caa24a',Rehabilitasi:'#8fc278',Ekonomi:'#c06a3a',Lainnya:'#9aa89a'};
+
+  // (3) STREAMGRAPH — stacked area of activity categories across years
+  function streamgraph(mount, cats, catData, years){
+    const W=720,H=340;
+    const PL=10,PR=150,PT=20,PB=40;
+    const cw=W-PL-PR, ch=H-PT-PB;
+    const s=svg(W,H);mount.innerHTML='';mount.appendChild(s);
+    // totals per year for stacking
+    const stepX=cw/(years.length-1);
+    // compute cumulative stacks
+    const totals=years.map(y=>cats.reduce((a,c)=>a+(catData[y][c]||0),0));
+    const maxTotal=Math.max(...totals)*1.05;
+    let baseline=years.map(()=>PT+ch); // start from bottom
+    // build from bottom up
+    const layers=cats.map(c=>{
+      const top=years.map((y,i)=>{const v=catData[y][c]||0;const h=v/maxTotal*ch;const t=baseline[i]-h;return t;});
+      const bottom=baseline.slice();
+      baseline=top.slice();
+      return {c,top,bottom};
+    });
+    layers.forEach((ly,li)=>{
+      const pts=[];
+      years.forEach((y,i)=>pts.push([PL+stepX*i, ly.top[i]]));
+      for(let i=years.length-1;i>=0;i--)pts.push([PL+stepX*i, ly.bottom[i]]);
+      // smooth path
+      const d='M'+pts.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L')+' Z';
+      const path=el('path',{d,fill:CATCOL[ly.c],opacity:0},s);
+      requestAnimationFrame(()=>{path.style.transition=`opacity .5s ease ${li*.06}s`;path.style.opacity=.92;});
+      // label at right
+      const ly2=(ly.top[years.length-1]+ly.bottom[years.length-1])/2;
+      const v=catData[years[years.length-1]][ly.c]||0;
+      if(v>0){el('text',{x:W-PR+10,y:ly2+3,'font-size':11,fill:CATCOL[ly.c],'font-weight':600},s).textContent=ly.c;}
+    });
+    // x labels
+    years.forEach((y,i)=>el('text',{x:PL+stepX*i,y:H-PB+22,'text-anchor':'middle',class:'x-label'},s).textContent=y);
+  }
+
+  // (2) RADIAL/POLAR bar — composition of categories (one year)
+  function polarChart(mount, cats, data){
+    const W=360,H=360,cx=180,cy=180,r0=46,rMax=150;
+    const s=svg(W,H);mount.innerHTML='';mount.appendChild(s);
+    const vals=cats.map(c=>data[c]||0);const max=Math.max(1,...vals);
+    const n=cats.length;const gap=0.06;
+    // rings
+    [0.25,0.5,0.75,1].forEach(f=>el('circle',{cx,cy,r:r0+(rMax-r0)*f,fill:'none',stroke:'var(--line2)','stroke-width':1},s));
+    cats.forEach((c,i)=>{
+      const a0=(i/n)*Math.PI*2 - Math.PI/2 + gap;
+      const a1=((i+1)/n)*Math.PI*2 - Math.PI/2 - gap;
+      const v=data[c]||0;const rr=r0+(rMax-r0)*(v/max);
+      const x0=cx+r0*Math.cos(a0),y0=cy+r0*Math.sin(a0);
+      const x1=cx+rr*Math.cos(a0),y1=cy+rr*Math.sin(a0);
+      const x2=cx+rr*Math.cos(a1),y2=cy+rr*Math.sin(a1);
+      const x3=cx+r0*Math.cos(a1),y3=cy+r0*Math.sin(a1);
+      const large=(a1-a0)>Math.PI?1:0;
+      const p=el('path',{d:`M${x0} ${y0} L${x1} ${y1} A${rr} ${rr} 0 ${large} 1 ${x2} ${y2} L${x3} ${y3} A${r0} ${r0} 0 ${large} 0 ${x0} ${y0} Z`,fill:CATCOL[c],opacity:0},s);
+      const rrTarget=rr;
+      // animate radius
+      const pStart=`M${x0} ${y0} L${cx+r0*Math.cos(a0)} ${cy+r0*Math.sin(a0)} A${r0} ${r0} 0 ${large} 1 ${cx+r0*Math.cos(a1)} ${cy+r0*Math.sin(a1)} L${x3} ${y3} Z`;
+      requestAnimationFrame(()=>{p.style.transition='opacity .6s ease';p.style.opacity=.92;});
+      // label
+      const am=(a0+a1)/2;const lr=rMax+14;
+      const lx=cx+lr*Math.cos(am),ly=cy+lr*Math.sin(am);
+      el('text',{x:lx,y:ly+3,'text-anchor':Math.cos(am)>0.2?'start':(Math.cos(am)<-0.2?'end':'middle'),'font-size':10,fill:'#5e6f60','font-weight':600},s).textContent=c+' ('+v+')';
+    });
+    el('text',{x:cx,y:cy+4,'text-anchor':'middle','font-family':'Fraunces,serif','font-size':13,fill:'#0c2a18'},s).textContent='Ragam';
+  }
+
+  // (4) HEATMAP — category x year intensity
+  function heatmap(mount, cats, catData, years){
+    const cellW=78,cellH=34,padL=110,padT=26;
+    const W=padL+years.length*cellW+16,H=padT+cats.length*cellH+10;
+    const s=svg(W,H);mount.innerHTML='';mount.appendChild(s);s.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    let max=0;cats.forEach(c=>years.forEach(y=>max=Math.max(max,catData[y][c]||0)));
+    years.forEach((y,i)=>el('text',{x:padL+i*cellW+cellW/2,y:padT-8,'text-anchor':'middle',class:'x-label','font-size':11},s).textContent=y);
+    cats.forEach((c,r)=>{
+      el('text',{x:padL-10,y:padT+r*cellH+cellH/2+4,'text-anchor':'end','font-size':11,fill:'#2e3d33','font-weight':500},s).textContent=c;
+      years.forEach((y,i)=>{
+        const v=catData[y][c]||0;const t=v/max;
+        const x=padL+i*cellW+3,yy=padT+r*cellH+3;
+        const rect=el('rect',{x,y:yy,width:cellW-6,height:cellH-6,rx:6,fill:'#16412a','fill-opacity':0},s);
+        requestAnimationFrame(()=>{rect.style.transition=`fill-opacity .6s ease ${(i+r)*.03}s`;rect.setAttribute('fill-opacity',(0.08+t*0.88).toFixed(2));});
+        el('text',{x:x+(cellW-6)/2,y:yy+(cellH-6)/2+4,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':11.5,'font-weight':600,fill:t>0.5?'#fff':'#2e3d33'},s).textContent=v||'';
+      });
+    });
+  }
+
+  // (1) BUMP CHART — rank of categories by activity count across years
+  function bumpChart(mount, cats, catData, years){
+    const W=720,H=320,padL=90,padR=130,padT=24,padB=34;
+    const cw=W-padL-padR, ch=H-padT-padB;
+    const s=svg(W,H);mount.innerHTML='';mount.appendChild(s);
+    const n=cats.length;
+    const stepX=cw/(years.length-1);
+    const rowH=ch/(n-1);
+    // rank per year (1=top)
+    const ranks={};years.forEach(y=>{
+      const sorted=cats.slice().sort((a,b)=>(catData[y][b]||0)-(catData[y][a]||0));
+      ranks[y]={};sorted.forEach((c,i)=>ranks[y][c]=i);
+    });
+    // gridlines
+    years.forEach((y,i)=>{el('line',{x1:padL+stepX*i,y1:padT,x2:padL+stepX*i,y2:padT+ch,class:'grid-line'},s);el('text',{x:padL+stepX*i,y:H-padB+22,'text-anchor':'middle',class:'x-label'},s).textContent=y;});
+    cats.forEach(c=>{
+      const pts=years.map((y,i)=>[padL+stepX*i, padT+ranks[y][c]*rowH]);
+      const d=pts.map((p,i)=>{if(i===0)return'M'+p[0]+' '+p[1];const pp=pts[i-1];const mx=(pp[0]+p[0])/2;return`C${mx} ${pp[1]} ${mx} ${p[1]} ${p[0]} ${p[1]}`;}).join(' ');
+      const pl=el('path',{d,fill:'none',stroke:CATCOL[c],'stroke-width':3,'stroke-linecap':'round',opacity:.9},s);
+      const len=pl.getTotalLength?pl.getTotalLength():1000;pl.style.strokeDasharray=len;pl.style.strokeDashoffset=len;
+      requestAnimationFrame(()=>{pl.style.transition='stroke-dashoffset 1.1s ease';pl.style.strokeDashoffset=0;});
+      pts.forEach(p=>el('circle',{cx:p[0],cy:p[1],r:4,fill:'#fff',stroke:CATCOL[c],'stroke-width':2.5},s));
+      // left label (rank Y1) & right label (rank last)
+      el('text',{x:padL-10,y:pts[0][1]+4,'text-anchor':'end','font-size':10.5,fill:CATCOL[c],'font-weight':600},s).textContent=c;
+      el('text',{x:padL+cw+12,y:pts[pts.length-1][1]+4,'text-anchor':'start','font-size':10.5,fill:CATCOL[c],'font-weight':600},s).textContent=c;
+    });
+    el('text',{x:padL-10,y:padT-8,'text-anchor':'end','font-size':9.5,fill:'#8a9a8c','font-family':'JetBrains Mono'},s).textContent='peringkat ▲';
+  }
+
+  // (5) GAUGE — KUPS silver status
+  function gauge(mount, label, level, levels){
+    // level index (0-based), levels array of names
+    const W=200,H=140,cx=100,cy=110,r=78;
+    const s=svg(W,H);mount.innerHTML='';mount.appendChild(s);
+    const a0=Math.PI, a1=0; // half circle top
+    const seg=(a0-a1)/levels.length;
+    const colors=['#cd7f32','#aeb6bf','#e0bd6a','#4fa36c']; // bronze, silver, gold, platinum-ish
+    levels.forEach((lv,i)=>{
+      const s0=a0-seg*i, s1=a0-seg*(i+1);
+      const x0=cx+r*Math.cos(s0),y0=cy+r*Math.sin(s0);
+      const x1=cx+r*Math.cos(s1),y1=cy+r*Math.sin(s1);
+      el('path',{d:`M${x0} ${y0} A${r} ${r} 0 0 1 ${x1} ${y1}`,fill:'none',stroke:colors[i]||'#ccc','stroke-width':14,'stroke-linecap':'butt',opacity:i===level?1:.25},s);
+    });
+    // needle
+    const na=a0-seg*(level+0.5);
+    const nx=cx+(r-6)*Math.cos(na),ny=cy+(r-6)*Math.sin(na);
+    const ndl=el('line',{x1:cx,y1:cy,x2:cx,y2:cy,stroke:'#16412a','stroke-width':3,'stroke-linecap':'round'},s);
+    requestAnimationFrame(()=>{ndl.style.transition='all 1s cubic-bezier(.34,1.56,.64,1)';ndl.setAttribute('x2',nx);ndl.setAttribute('y2',ny);});
+    el('circle',{cx,cy,r:5,fill:'#16412a'},s);
+    el('text',{x:cx,y:cy-14,'text-anchor':'middle','font-family':'Fraunces,serif','font-size':16,'font-weight':600,fill:colors[level]||'#333'},s).textContent=levels[level];
+    el('text',{x:cx,y:H-6,'text-anchor':'middle','font-size':11,fill:'#5e6f60','font-weight':600},s).textContent=label;
+  }
+
   barChart($('#ovReachChart'), L.map(r=>({k:r.y,s:r.cycle,v:r.ppl})), {c1:'#4fa36c',c2:'#16412a'});
   donut($('#ovGenderDonut'), [{l:'Laki-laki',v:797,c:'#2f7d51'},{l:'Perempuan',v:569,c:'#cf8645'}]);
 
@@ -887,8 +1049,24 @@ window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lau
       return `<div class="catrow"><div class="cl">${c}</div><div class="ct"><div style="width:0;background:${CATCOLORS[c]}" data-w="${Math.round(v/max*100)}"></div></div><div class="cv">${v}</div></div>`;
     }).join('');
     requestAnimationFrame(()=>requestAnimationFrame(()=>{$$('#catBars .ct>div').forEach(d=>d.style.width=d.dataset.w+'%');}));
+    if($('#catPolar')) polarChart($('#catPolar'), cats, data);
   }
   buildCatYears();renderCat();
+
+  // streamgraph, heatmap, bump (lintas tahun)
+  if($('#streamChart')) streamgraph($('#streamChart'), M.cats, M.catData, YEARS);
+  if($('#heatChart')) heatmap($('#heatChart'), M.cats, M.catData, YEARS);
+  if($('#bumpChart')) bumpChart($('#bumpChart'), M.cats, M.catData, YEARS);
+  if($('#streamLegend')) $('#streamLegend').innerHTML=M.cats.map(c=>`<span><i style="background:${CATCOL[c]}"></i>${c}</span>`).join('');
+
+  // KUPS gauges
+  if($('#kupsGauges')){
+    const lv=['Biru','Perak','Emas','Platina'];
+    ['Madu','Ikan','Karet','Ekowisata','Rotan'].forEach(k=>{
+      const d=document.createElement('div');d.className='gauge-c';$('#kupsGauges').appendChild(d);
+      gauge(d,'KUPS '+k,1,lv);
+    });
+  }
 
   // activity year explorer (full list)
   let expYear='Y4', expTerm='';
