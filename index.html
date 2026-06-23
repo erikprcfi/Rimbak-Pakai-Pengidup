@@ -372,6 +372,9 @@ tr.total td.num{color:#fff}
       <div class="sb-item" data-view="training"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>Pelatihan</div>
       <div class="sb-item" data-view="growth"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17 9 11l4 4 8-8"/><path d="M17 7h4v4"/></svg>Pertumbuhan &amp; Retensi</div>
       <div class="sb-item" data-view="kups"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Ekonomi KUPS</div>
+      <div class="sb-sec">Lingkungan</div>
+      <div class="sb-item" data-view="fauna"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11c0-3 2-5 5-5 1 0 2 0 3 1 1-1 2-1 3-1 3 0 5 2 5 5 0 4-4 7-8 9-4-2-8-5-8-9Z"/><circle cx="8.5" cy="10" r="1"/></svg>Satwa Liar</div>
+      <div class="sb-item" data-view="flora"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12M12 12c0-3 2-6 6-6 0 3-2 6-6 6Zm0 0c0-3-2-6-6-6 0 3 2 6 6 6Z"/></svg>Rehabilitasi Hutan</div>
       <div class="sb-sec">Data</div>
       <div class="sb-item" data-view="registry"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>Registry Peserta</div>
       <div class="sb-item" data-view="docs"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Dokumentasi</div>
@@ -772,6 +775,126 @@ tr.total td.num{color:#fff}
         </div>
       </section>
 
+      <!-- ===================== FAUNA / SATWA ===================== -->
+      <section class="view" id="fauna">
+        <div class="vhead"><div class="eye">Lingkungan · 01</div><h1>Satwa Liar Nanga Lauk</h1><p>Keanekaragaman fauna yang terpantau melalui patroli di Hutan Desa dan Hutan Produksi Terbatas, 2019–2024. Data mencakup kelas satwa, status konservasi IUCN, dan CITES.</p></div>
+
+        <div class="hero" style="padding:38px 38px">
+          <span class="hero-tag">◆ Keanekaragaman Hayati · Indikator Hutan Sehat</span>
+          <h2 style="font-size:clamp(24px,3.4vw,36px)">114 spesies satwa, 29 di antaranya terancam punah.</h2>
+          <p class="lead">Kehadiran satwa langka seperti bekantan, orangutan, dan beruang madu menjadi bukti bahwa hutan yang dijaga masyarakat tetap menjadi rumah bagi kehidupan liar yang kaya.</p>
+          <div class="hero-kpis" style="margin-top:26px">
+            <div class="hk"><div class="n">114</div><div class="l">Spesies tercatat</div></div>
+            <div class="hk"><div class="n">3.646</div><div class="l">Total perjumpaan</div></div>
+            <div class="hk"><div class="n">29</div><div class="l">Spesies terancam</div></div>
+            <div class="hk"><div class="n">4</div><div class="l">Kelas satwa</div></div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <div class="panel-head"><div><h3>Spesies Teramati per Tahun</h3><div class="sub">Jumlah spesies unik tiap tahun pemantauan</div></div></div>
+            <div id="faunaYearChart"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h3>Komposisi Kelas Satwa</h3><div class="sub">Berdasarkan jumlah spesies unik</div></div></div>
+            <div id="faunaClassDonut"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Status Konservasi IUCN</h3><div class="sub">Sebaran spesies menurut tingkat keterancaman</div></div><span class="tag">114 spesies</span></div>
+          <div id="iucnBars" class="catbars"></div>
+          <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px;background:var(--paper2);border:1px solid var(--line2);border-radius:11px;padding:13px 16px">Status IUCN: <b>Critically Endangered</b> (kritis) dan <b>Endangered</b> (terancam) menandai spesies yang paling rentan punah. Kehadiran mereka di Nanga Lauk menegaskan nilai konservasi kawasan ini.</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Peta Sebaran Satwa berdasarkan Status IUCN</h3><div class="sub">Titik perjumpaan satwa di Hutan Desa Nanga Lauk · Program SCCM 2024–2025</div></div><span class="tag">WGS 1984 · 49N</span></div>
+          <div class="mapwrap"><img src="sebaran_satwa.png" alt="Peta Sebaran Satwa Nanga Lauk" loading="lazy" id="faunaMapImg"></div>
+          <div class="legend" style="margin-top:14px">
+            <span><i style="background:#3a8a5b"></i>LC · Risiko Rendah</span>
+            <span><i style="background:#4f9bbf"></i>NT · Hampir Terancam</span>
+            <span><i style="background:#e0bd2a"></i>EN · Terancam</span>
+            <span><i style="background:#4caf50"></i>VU · Rentan</span>
+            <span><i style="background:#d33"></i>CR · Kritis</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Daftar Spesies Satwa</h3><div class="sub">Cari nama lokal atau ilmiah · saring berdasarkan kelas</div></div><span class="tag" id="faunaCount"></span></div>
+          <div class="toolbar">
+            <div class="search-box" style="flex:1;min-width:240px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="faunaSearch" type="text" placeholder="Cari nama satwa… (mis. bekantan, beruang, enggang)" autocomplete="off"></div>
+            <div class="chips" id="faunaChips">
+              <button class="chip on" data-c="all">Semua</button>
+              <button class="chip" data-c="Mamalia">Mamalia</button>
+              <button class="chip" data-c="Aves">Aves (Burung)</button>
+              <button class="chip" data-c="Herpetofauna">Herpetofauna</button>
+              <button class="chip" data-c="terancam">⚠ Terancam</button>
+            </div>
+          </div>
+          <div class="tbl-wrap"><table id="faunaTable">
+            <thead><tr><th>Nama Lokal</th><th>Nama Ilmiah</th><th>Kelas</th><th>Status IUCN</th><th>CITES</th><th class="num">Perjumpaan</th><th>Tahun</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+        </div>
+      </section>
+
+      <!-- ===================== FLORA / TANAMAN ===================== -->
+      <section class="view" id="flora">
+        <div class="vhead"><div class="eye">Lingkungan · 02</div><h1>Rehabilitasi &amp; Penanaman Hutan</h1><p>Program penanaman dan pemulihan kawasan hutan beserta pemantauan tingkat hidup bibit, 2019–2024. Mencakup target, realisasi, dan hasil monitoring tiap tahun.</p></div>
+
+        <div class="hero" style="padding:38px 38px">
+          <span class="hero-tag">◆ Pemulihan Tutupan Hutan · Aksi Iklim Nyata</span>
+          <h2 style="font-size:clamp(24px,3.4vw,36px)">21.870 bibit ditanam memulihkan hutan desa.</h2>
+          <p class="lead">Selama lima tahun, masyarakat menanam dan memantau ribuan bibit di kawasan Hutan Produksi Terbatas — sebuah investasi jangka panjang bagi tutupan hutan dan penyerapan karbon.</p>
+          <div class="hero-kpis" style="margin-top:26px">
+            <div class="hk"><div class="n">21.870</div><div class="l">Bibit ditanam</div></div>
+            <div class="hk"><div class="n">15.931</div><div class="l">Bibit hidup terpantau</div></div>
+            <div class="hk"><div class="n">10.082</div><div class="l">Bibit replanting</div></div>
+            <div class="hk"><div class="n">5 <small>thn</small></div><div class="l">Periode 2019–2024</div></div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <div class="panel-head"><div><h3>Target vs Realisasi Penanaman</h3><div class="sub">Jumlah bibit tiap tahun</div></div></div>
+            <div id="plantChart"></div>
+            <div class="legend"><span><i style="background:var(--moss)"></i>Target</span><span><i style="background:var(--forest)"></i>Realisasi</span></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h3>Tingkat Hidup Bibit</h3><div class="sub">Persentase bibit hidup saat monitoring</div></div></div>
+            <div id="survivalChart"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Hasil Monitoring — Hidup vs Mati</h3><div class="sub">Status bibit saat pemantauan tiap tahun</div></div></div>
+          <div id="monChart"></div>
+          <div class="legend"><span><i style="background:var(--forest)"></i>Hidup</span><span><i style="background:var(--clay)"></i>Mati</span><span><i style="background:var(--faint)"></i>Hilang</span></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Peta Area Penanaman</h3><div class="sub">Lokasi blok penanaman per tahun · LPHD Lauk Bersatu · Program SCCM 2019–2024</div></div><span class="tag">Skala 1:10.000</span></div>
+          <div class="mapwrap"><img src="peta_tanaman.png" alt="Peta Area Penanaman Nanga Lauk" loading="lazy" id="floraMapImg"></div>
+          <div class="legend" style="margin-top:14px">
+            <span><i style="background:#e8862a"></i>Titik Tanam Y1</span>
+            <span><i style="background:#2a5ad8"></i>Titik Tanam Y2</span>
+            <span><i style="background:#9b2ad8"></i>Titik Tanam Y3</span>
+            <span><i style="background:#e0bd2a"></i>Titik Tanam Y4</span>
+            <span><i style="background:#3a8a5b"></i>Titik Tanam Y5</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Tabel Rinci Penanaman &amp; Monitoring</h3><div class="sub">Target, realisasi, dan hasil pemantauan per tahun</div></div></div>
+          <div class="tbl-wrap"><table id="plantTable">
+            <thead><tr><th>Tahun</th><th class="num">Target</th><th class="num">Replanting</th><th class="num">Realisasi</th><th class="num">Hidup</th><th class="num">Mati</th><th class="num">% Hidup</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+          <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px;background:var(--paper2);border:1px solid var(--line2);border-radius:11px;padding:13px 16px">Catatan: Replanting (penyulaman) dilakukan di blok penanaman tahun berikutnya. Lokasi penanaman utama berada di kawasan Hutan Produksi Terbatas (Melampam). Sebagian monitoring tahun terakhir masih berlangsung.</p>
+        </div>
+      </section>
+
       <!-- ===================== REGISTRY ===================== -->
       <section class="view" id="registry">
         <div class="vhead"><div class="eye">Data · 01</div><h1>Registry Peserta</h1><p>Daftar lengkap 805 individu unik. Cari nama atau peran, saring per tahun aktif, dan klik baris untuk melihat rincian kehadiran.</p></div>
@@ -833,6 +956,8 @@ window.__DRILL__={"Y1":{"activities":[{"n":"Annual Meeting LPHD (September - Aug
 window.__PHOTOS__=[{"file":"foto/hutan_desa.jpg","caption":"Hutan desa Nanga Lauk"},{"file":"foto/permukiman.jpg","caption":"Permukiman desa"},{"file":"foto/jalur_sungai.png","caption":"Jalur sungai"},{"file":"foto/patroli_batas_desa.png","caption":"Patroli batas desa"},{"file":"foto/tim_patroli.JPG","caption":"Tim patroli hutan"},{"file":"foto/tim_rehabilitasi.JPG","caption":"Tim rehabilitasi"},{"file":"foto/penanaman.JPG","caption":"Penanaman pohon"},{"file":"foto/persemaian.JPG","caption":"Persemaian bibit"},{"file":"foto/monitoring_tanaman_nanas.JPG","caption":"Monitoring tanaman nanas"},{"file":"foto/ikan_biawan.jpeg","caption":"Budidaya ikan biawan"},{"file":"foto/pengeringan_ikan.jpg","caption":"Pengeringan ikan"},{"file":"foto/pelatihan_pembuatan_abon.JPG","caption":"Pelatihan pembuatan abon"},{"file":"foto/pelatihan_pembuatan_kerupuk_ikan.JPG","caption":"Pelatihan pembuatan kerupuk ikan"},{"file":"foto/madu.png","caption":"Panen madu hutan"},{"file":"foto/lebah.png","caption":"Budidaya lebah madu"},{"file":"foto/sarang_tikung.png","caption":"Sarang tikung (lebah madu)"},{"file":"foto/sarang_lalau.png","caption":"Sarang lalau (lebah madu)"},{"file":"foto/orangutan_nanga_lauk.png","caption":"Orangutan Nanga Lauk"},{"file":"foto/kegiatan_baca_bersama_anak_anak.png","caption":"Kegiatan baca bersama anak-anak"}];
 window.__KUPS__={"years":["Y1","Y2","Y3","Y4","Y5","Y6"],"cycle":{"Y1":"2019/20","Y2":"2020/21","Y3":"2021/22","Y4":"2022/23","Y5":"2023/24","Y6":"2024/25"},"kups":["Madu","Karet","Ekowisata","Ikan","Rotan"],"perYear":{"Y1":{"Madu":15430010,"Ikan":12244995,"Karet":0,"Rotan":0,"Ekowisata":2190000},"Y2":{"Madu":13759237,"Ikan":28618259,"Karet":976151,"Rotan":7541103,"Ekowisata":21130313},"Y3":{"Madu":10600439,"Ikan":515729,"Karet":21713,"Rotan":830201,"Ekowisata":6859679},"Y4":{"Madu":11371464,"Ikan":3427000,"Karet":4582274,"Rotan":1000000,"Ekowisata":33985000},"Y5":{"Madu":56055000,"Ikan":4850000,"Karet":86837157,"Rotan":0,"Ekowisata":17770000},"Y6":{"Madu":70320000,"Ikan":2570000,"Karet":18195150,"Rotan":0,"Ekowisata":0}},"totalKups":{"Madu":177536151,"Ikan":52225983,"Karet":110612445,"Rotan":9371304,"Ekowisata":81934992},"totalYear":{"Y1":29865006,"Y2":72025063,"Y3":18827761,"Y4":54365738,"Y5":165512157,"Y6":91085150},"grand":431680875,"info":{"Madu":{"icon":"🍯","en":"Honey","status":"Perak"},"Karet":{"icon":"🌳","en":"Rubber","status":"Perak"},"Ekowisata":{"icon":"🏞️","en":"Ecotourism","status":"Perak"},"Ikan":{"icon":"🐟","en":"Fish","status":"Perak"},"Rotan":{"icon":"🪢","en":"Rattan","status":"Perak"}}};
 window.__TRAINING__={"perYear":{"Y1":9,"Y2":6,"Y3":1,"Y4":6,"Y5":1,"Y6":3},"total":26,"items":[{"year":"Y1","name":"Sustainable Forest Management Training","date":"26-27 June 2020","participants":19,"cat":"Kelembagaan"},{"year":"Y1","name":"Forest Village Regulation Training","date":"28 June - 02 July 2020","participants":26,"cat":"Kelembagaan"},{"year":"Y1","name":"SMART Patrol Training","date":"17-21 February 2020","participants":8,"cat":"Patroli"},{"year":"Y1","name":"Forest and Land Fire Control Training","date":"25-26 July 2020","participants":21,"cat":"Pengendalian Kebakaran"},{"year":"Y1","name":"Agroforestry Training","date":"25-26 January 2020","participants":0,"cat":"Agroforestri"},{"year":"Y1","name":"BOKAR Business Development Training","date":"28-29 October 2019","participants":0,"cat":"Ekonomi/KUPS"},{"year":"Y1","name":"Rattan Product Development Training","date":"18-19 December 2019","participants":0,"cat":"Ekonomi/KUPS"},{"year":"Y1","name":"Entrepreneurial Management Training for KUPS","date":"21-22 January 2020","participants":0,"cat":"Ekonomi/KUPS"},{"year":"Y1","name":"Study on Village Forest Business Model (Visit to Batu Ampar and Asset Training - Finance)","date":"19-23 July 2020","participants":30,"cat":"Ekonomi/KUPS"},{"year":"Y2","name":"Training and preparation of Grievance Redress Mechanism (GRM) SOP documents","date":"16 December 2020 10-11 January 2021","participants":8,"cat":"Kelembagaan"},{"year":"Y2","name":"Training for Capacity Building for Farmers and Social Forestry Facilitators in the Phase II Labor Intensive Pattern organized by MoEF.","date":"02-05 March 2021","participants":5,"cat":"Lainnya"},{"year":"Y2","name":"Library management training 2021","date":"09-11 January 2021","participants":20,"cat":"Kelembagaan"},{"year":"Y2","name":"Training for KUPS Ikan/Fish (fish and crackers)","date":"18-19 March 2021","participants":26,"cat":"Ekonomi/KUPS"},{"year":"Y2","name":"Training for KUPS Ikan/Fish (floss dan nugget)","date":"03-04 June 2021","participants":30,"cat":"Ekonomi/KUPS"},{"year":"Y2","name":"Training for KUPS Madu/Honey","date":"17-18 June 2021","participants":23,"cat":"Ekonomi/KUPS"},{"year":"Y3","name":"Agroforestry Training","date":"24-25 January 2022","participants":30,"cat":"Agroforestri"},{"year":"Y4","name":"Monitoring and Evaluation Training","date":"19-21 Desember 2022","participants":2,"cat":"Kelembagaan"},{"year":"Y4","name":"Journalist and Photography Training","date":"16-18 January 2023","participants":2,"cat":"Media & Kreatif"},{"year":"Y4","name":"Training Course and Study Visit (Organic Youth Camp 2023) in Mojokerto, East Java","date":"21-24 February 2023","participants":1,"cat":"Ekowisata & Penghidupan"},{"year":"Y4","name":"Training Course and Study Visit Study Visit to LPHD Way Kalam, Lampung","date":"29, 31 May - 06 June 2023","participants":17,"cat":"Ekowisata & Penghidupan"},{"year":"Y4","name":"SMART Patrol Training","date":"14-15 January 2023","participants":16,"cat":"Patroli"},{"year":"Y4","name":"Marketing and Promotion (Lampit Making Training in Nanga Lauk Village, Embaloh Hilir District, Kapuas Hulu Regency)","date":"10-14 April 2023","participants":4,"cat":"Ekonomi/KUPS"},{"year":"Y5","name":"Training Courses (Business Development and Financial Accounting Training Based on Android KUPS)","date":"13-15 Nov 2024","participants":5,"cat":"Ekonomi/KUPS"},{"year":"Y6","name":"Basic graphic design training","date":"17-18 March 2025","participants":9,"cat":"Media & Kreatif"},{"year":"Y6","name":"Fire control training courses","date":"08-10 August 2025","participants":10,"cat":"Pengendalian Kebakaran"},{"year":"Y6","name":"Training courses of management for ecotourism in youth camp","date":"20-25 August 2025","participants":1,"cat":"Ekowisata & Penghidupan"}],"years":["Y1","Y2","Y3","Y4","Y5","Y6"],"cycle":{"Y1":"2019/20","Y2":"2020/21","Y3":"2021/22","Y4":"2022/23","Y5":"2023/24","Y6":"2024/25"}};
+window.__FAUNA__={"years":["2019/2020","2020/2021","2021/2022","2022/2023","2023/2024"],"yshort":{"2019/2020":"Y1","2020/2021":"Y2","2021/2022":"Y3","2022/2023":"Y4","2023/2024":"Y5"},"sppByYear":{"2019/2020":67,"2020/2021":54,"2021/2022":49,"2022/2023":64,"2023/2024":54},"encByYear":{"2019/2020":603,"2020/2021":341,"2021/2022":198,"2022/2023":1077,"2023/2024":1427},"classDist":{"Aves":72,"Mamalia":21,"Herpetofauna":20,"Antropoda":2},"iucnDist":{"Least Concern":77,"Vulnerable":9,"Endangered":10,"Near Threatened":9,"Critically Endangered":10},"totalSpecies":114,"totalEnc":3646,"threatenedCount":29,"species":[{"lokal":"Kuncit","latin":"Anthreptes malacensis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":533,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Cico","latin":"Aegithina viridissima","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":463,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Cucak Hijau","latin":"Chloropsis sonnerati","kelas":"Aves","iucn":"Endangered","cites":"","enc":374,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Keciang","latin":"Dicrurus paradiseus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":230,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Rui","latin":"Anthracoceros malayanus","kelas":"Aves","iucn":"Vulnerable","cites":"","enc":205,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Elang Bau","latin":"Haliastur indus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":163,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Beruang","latin":"Helarctos malayanus","kelas":"Mamalia","iucn":"Vulnerable","cites":"I","enc":133,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Beo","latin":"Gracula religiosa","kelas":"Aves","iucn":"Least Concern","cites":"II","enc":106,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Burung Biru","latin":"Irena puella","kelas":"Aves","iucn":"Least Concern","cites":"","enc":97,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Bajing/ Engkabak","latin":"Callosciurus prevostii","kelas":"Mamalia","iucn":"Least Concern","cites":"","enc":95,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Denang Air","latin":"Anhinga melanogaster","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":89,"years":["Y1","Y3","Y4","Y5"]},{"lokal":"Mayas","latin":"Pongo pygmaeus","kelas":"Mamalia","iucn":"Critically Endangered","cites":"I","enc":80,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Monyet Ekor Panjang","latin":"Macaca fascicularis","kelas":"Mamalia","iucn":"Endangered","cites":"","enc":75,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Tinjau","latin":"Copsychus saularis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":66,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Babi","latin":"Sus barbatus","kelas":"Mamalia","iucn":"Vulnerable","cites":"","enc":62,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Merbah Belukar","latin":"Pycnonotus plumosus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":62,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Bajing/Engkabak","latin":"Callosciurus prevostii","kelas":"Mamalia","iucn":"Least Concern","cites":"","enc":62,"years":["Y3","Y4","Y5"]},{"lokal":"Gagak","latin":"Corvus enca","kelas":"Aves","iucn":"Least Concern","cites":"","enc":39,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Bangau","latin":"Egretta garzetta","kelas":"Aves","iucn":"Least Concern","cites":"","enc":37,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Engkabak","latin":"Ratufa affinis","kelas":"Mamalia","iucn":"Near Threatened","cites":"","enc":37,"years":["Y1","Y3","Y4","Y5"]},{"lokal":"Bekaka","latin":"Pelargopsis capensis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":36,"years":["Y1","Y2","Y4","Y5"]},{"lokal":"Pelatuk","latin":"Picus miniaceus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":36,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Entogok","latin":"Megalaima chrysopogon/ \nPsilopogon chrysopogon","kelas":"Aves","iucn":"Least Concern","cites":"","enc":29,"years":["Y1","Y4","Y5"]},{"lokal":"Bubut","latin":"Centropus sinensis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":28,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Empuluk / Cucak janggut","latin":"Alophoixus bres","kelas":"Aves","iucn":"Endangered","cites":"","enc":25,"years":["Y1","Y2","Y3","Y4"]},{"lokal":"Biawak","latin":"Varanus salvator","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":24,"years":["Y1","Y2","Y5"]},{"lokal":"Punai","latin":"Treron curvirostra","kelas":"Aves","iucn":"Least Concern","cites":"","enc":21,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Papau","latin":"Harpactes duvaucelii","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":21,"years":["Y4","Y5"]},{"lokal":"Kelasi","latin":"Presbytis rubicundra","kelas":"Mamalia","iucn":"Critically Endangered","cites":"","enc":19,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Ular Phyton/ Ular Sawak","latin":"Python reticulatus","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":18,"years":["Y4","Y5"]},{"lokal":"Marui","latin":"Eurylaimus ochromalus","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":17,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Rangkong Badak/ Tinggang","latin":"Buceros rhinoceros","kelas":"Aves","iucn":"Vulnerable","cites":"","enc":17,"years":["Y1","Y2","Y3","Y4"]},{"lokal":"Sengayan","latin":"Rollulus rouloul","kelas":"Aves","iucn":"Vulnerable","cites":"","enc":16,"years":["Y4","Y5"]},{"lokal":"Kutilang Emas","latin":"Pycnonotus aurigaster","kelas":"Aves","iucn":"Least Concern","cites":"","enc":14,"years":["Y3","Y4","Y5"]},{"lokal":"Layang","latin":"Hirundo rustica","kelas":"Aves","iucn":"Least Concern","cites":"","enc":14,"years":["Y4","Y5"]},{"lokal":"Empuluk","latin":"Pycnonotus zeylanicus","kelas":"Aves","iucn":"Critically Endangered","cites":"I","enc":13,"years":["Y1","Y3"]},{"lokal":"Ganggang","latin":"Cymbirhynchus macrorhynchos","kelas":"Aves","iucn":"Least Concern","cites":"","enc":13,"years":["Y1","Y3","Y4","Y5"]},{"lokal":"Tiong Lampu Biasa","latin":"Eurystomus orientalis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":13,"years":["Y3","Y4"]},{"lokal":"Murai Batu","latin":"Copsychus malabaricus","kelas":"Aves","iucn":"Least Concern","cites":"II","enc":12,"years":["Y1","Y2","Y3"]},{"lokal":"Rangkong Julang Emas","latin":"Rhyticeros undulatus","kelas":"Aves","iucn":"Vulnerable","cites":"","enc":12,"years":["Y1","Y2"]},{"lokal":"Elangular Bido","latin":"Spilornis cheela","kelas":"Aves","iucn":"Least Concern","cites":"","enc":11,"years":["Y1","Y2"]},{"lokal":"Trenggiling","latin":"Manis javanica","kelas":"Mamalia","iucn":"Critically Endangered","cites":"I","enc":11,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Elang Buak","latin":"Otus lempiji","kelas":"Aves","iucn":"Least Concern","cites":"","enc":10,"years":["Y1","Y2","Y3"]},{"lokal":"Pelanduk Kerangas","latin":"Tragulus kanchil","kelas":"Mamalia","iucn":"Least Concern","cites":"","enc":9,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Kujuk / Bangau Ungu","latin":"Ardea purpurea","kelas":"Aves","iucn":"Least Concern","cites":"","enc":8,"years":["Y1","Y2","Y3"]},{"lokal":"Manuk Ilai","latin":"Zanclostomus javanicus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":8,"years":["Y1"]},{"lokal":"Ular Kemeliang / Cincin Emas","latin":"Boiga dendrophila","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":8,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Iram","latin":"Arachnothera longirostra","kelas":"Aves","iucn":"Least Concern","cites":"","enc":8,"years":["Y4","Y5"]},{"lokal":"Karao","latin":"Ciconia stormi","kelas":"Aves","iucn":"Endangered","cites":"","enc":7,"years":["Y1","Y2","Y3","Y4","Y5"]},{"lokal":"Manok Ilai","latin":"Zanclostomus javanicus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":7,"years":["Y2","Y3"]},{"lokal":"Bunglon","latin":"Bronchocela cristatella","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":7,"years":["Y4","Y5"]},{"lokal":"Walet Nest Hitam","latin":"Collocalia maximus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":7,"years":["Y5"]},{"lokal":"Berang- Berang","latin":"Lutrinae","kelas":"Mamalia","iucn":"Least Concern","cites":"II","enc":6,"years":["Y1"]},{"lokal":"Bekantan","latin":"Nasalis larvatus","kelas":"Mamalia","iucn":"Endangered","cites":"I","enc":5,"years":["Y1","Y3"]},{"lokal":"Burak","latin":"Copsychus malabaricus","kelas":"Aves","iucn":"Least Concern","cites":"II","enc":5,"years":["Y1","Y4"]},{"lokal":"Encruit","latin":"Trichastoma rostratum","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":5,"years":["Y1","Y4","Y5"]},{"lokal":"Ular Ngail","latin":"Ophiophagus hannah","kelas":"Herpetofauna","iucn":"Vulnerable","cites":"II","enc":5,"years":["Y1","Y2"]},{"lokal":"Ilai/ Manok Ilai","latin":"Zanclostomus javanicus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":5,"years":["Y3","Y4"]},{"lokal":"Blekok Sawah","latin":"Ardeola speciosa","kelas":"Aves","iucn":"Least Concern","cites":"","enc":4,"years":["Y1","Y2"]},{"lokal":"Emarau","latin":"Dicrurus macrocercus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":4,"years":["Y1"]},{"lokal":"Ilai","latin":"Zanclostomus javanicus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":4,"years":["Y1","Y3","Y4"]},{"lokal":"Sing Biru","latin":"Anthracoceros albirostris","kelas":"Aves","iucn":"Least Concern","cites":"","enc":4,"years":["Y1","Y2","Y4"]},{"lokal":"Enceruit","latin":"Trichastoma rostratum","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":4,"years":["Y2","Y4"]},{"lokal":"Kura - Kura","latin":"Cyclemys dentata","kelas":"Herpetofauna","iucn":"Critically Endangered","cites":"II","enc":4,"years":["Y2","Y3","Y4"]},{"lokal":"Lomak","latin":"Terpsiphone paradisi","kelas":"Aves","iucn":"Least Concern","cites":"","enc":4,"years":["Y2","Y3","Y5"]},{"lokal":"Bayan","latin":"Psittacula longicauda","kelas":"Aves","iucn":"Vulnerable","cites":"","enc":4,"years":["Y4","Y5"]},{"lokal":"Walet Sarang Hitam","latin":"Collocalia maximus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":4,"years":["Y4"]},{"lokal":"Enggang","latin":"Anthracoceros albirostris","kelas":"Aves","iucn":"Least Concern","cites":"","enc":3,"years":["Y1"]},{"lokal":"Kanji","latin":"Rhipidura javanica","kelas":"Aves","iucn":"Least Concern","cites":"","enc":3,"years":["Y1","Y4"]},{"lokal":"Poncin","latin":"Nannosciurus melanotis","kelas":"Mamalia","iucn":"Least Concern","cites":"","enc":3,"years":["Y1","Y4","Y5"]},{"lokal":"Trengiling","latin":"Manis javanica","kelas":"Mamalia","iucn":"Critically Endangered","cites":"I","enc":3,"years":["Y1"]},{"lokal":"Ular Untop","latin":"Elapidae sp","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":3,"years":["Y1","Y2"]},{"lokal":"Cenceriak","latin":"Prinia flaviventris","kelas":"Aves","iucn":"Least Concern","cites":"","enc":3,"years":["Y2","Y4","Y5"]},{"lokal":"Landak","latin":"Hystrix brachyura","kelas":"Mamalia","iucn":"Least Concern","cites":"","enc":3,"years":["Y4","Y5"]},{"lokal":"Elang Bondol","latin":"Haliastur indus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":2,"years":["Y1"]},{"lokal":"Pelondok","latin":"Malacocincla Perspicillata","kelas":"Aves","iucn":"Least Concern","cites":"","enc":2,"years":["Y1"]},{"lokal":"Ular Sawak","latin":"Malayapython reticulatus","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":2,"years":["Y1"]},{"lokal":"Donang Air","latin":"Anhinga melanogaster","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":2,"years":["Y2"]},{"lokal":"Kelempiau","latin":"Hylobates albibarbis","kelas":"Mamalia","iucn":"Endangered","cites":"","enc":2,"years":["Y2"]},{"lokal":"Ular Kemeliang/Cincin Emas","latin":"Boiga dendrophila","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":2,"years":["Y2"]},{"lokal":"Cucak Ranting","latin":"Chloropsis cyanopogon","kelas":"Aves","iucn":"Near Threatened","cites":"","enc":2,"years":["Y3","Y5"]},{"lokal":"Pekaka","latin":"Pelargopsis sinensis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":2,"years":["Y3"]},{"lokal":"Entarak","latin":"Megalaima australis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":2,"years":["Y4","Y5"]},{"lokal":"Keluwang","latin":"Pteropus vampyrus","kelas":"Mamalia","iucn":"Endangered","cites":"","enc":2,"years":["Y4","Y5"]},{"lokal":"Lebah","latin":"Anthophila","kelas":"Antropoda","iucn":"Least Concern","cites":"","enc":2,"years":["Y4"]},{"lokal":"Ayam Hutan","latin":"Gallus","kelas":"Aves","iucn":"Least Concern","cites":"II","enc":1,"years":["Y1"]},{"lokal":"Berang-Berang","latin":"Lutrinae","kelas":"Mamalia","iucn":"Least Concern","cites":"II","enc":1,"years":["Y1"]},{"lokal":"Empuluk Jamor","latin":"Pycnonotus sp","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y1"]},{"lokal":"Kerangkeng Perut Putih","latin":"Bucerotidae sp","kelas":"Aves","iucn":"Critically Endangered","cites":"","enc":1,"years":["Y1"]},{"lokal":"Kura - kura","latin":"Orlitia borneensis","kelas":"Herpetofauna","iucn":"Critically Endangered","cites":"II","enc":1,"years":["Y1"]},{"lokal":"Pergam","latin":"Ducula","kelas":"Aves","iucn":"Endangered","cites":"","enc":1,"years":["Y1"]},{"lokal":"Senggang","latin":"Rollulus rouloul","kelas":"Aves","iucn":"Vulnerable","cites":"","enc":1,"years":["Y1"]},{"lokal":"Ular Hijau","latin":"Trimeresurus albolabris","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y1"]},{"lokal":"Ular Kongkat Tebu","latin":"Bungarus candidus","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y1"]},{"lokal":"Burung Hijau","latin":"Chloropsis sonnerati zosterops","kelas":"Aves","iucn":"Endangered","cites":"","enc":1,"years":["Y2"]},{"lokal":"Burung Hitam","latin":"Dicrurus macrocercus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y2"]},{"lokal":"Empuluk Rimba","latin":"Pycnonotus sp","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y2"]},{"lokal":"Kelelawar","latin":"Chiroptera","kelas":"Mamalia","iucn":"Critically Endangered","cites":"","enc":1,"years":["Y2"]},{"lokal":"Kubung","latin":"Galeopterus variegatus","kelas":"Mamalia","iucn":"Least Concern","cites":"","enc":1,"years":["Y2"]},{"lokal":"Tionglampu Biasa","latin":"Eurystomus orientalis","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y2"]},{"lokal":"Ular Todong","latin":"Naja","kelas":"Herpetofauna","iucn":"Least Concern","cites":"II","enc":1,"years":["Y2"]},{"lokal":"Bangak Topi","latin":"Pellorneum capistratum","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y3"]},{"lokal":"Ular Kemeliang","latin":"Bungarus candidus","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y3"]},{"lokal":"Ular Phyton","latin":"Python reticulatus","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y3"]},{"lokal":"Beluk Ketupa","latin":"Ketupa Ketupu","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y4"]},{"lokal":"Elang Bido","latin":"Spilornis cheela","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y4"]},{"lokal":"Kukang","latin":"Nycticebus menagensis","kelas":"Mamalia","iucn":"Endangered","cites":"","enc":1,"years":["Y4"]},{"lokal":"Kupu - Kupu Gajah","latin":"Attacus atlas","kelas":"Antropoda","iucn":"Least Concern","cites":"","enc":1,"years":["Y4"]},{"lokal":"Tokek","latin":"Gekko","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y4"]},{"lokal":"Walet Sarang-hitam","latin":"Collocalia maximus","kelas":"Aves","iucn":"Least Concern","cites":"","enc":1,"years":["Y4"]},{"lokal":"Cicak Hutan","latin":"Cyrtodactylus malayanus","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y5"]},{"lokal":"Cicak Terbang","latin":"Draco quinquefasciatus","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y5"]},{"lokal":"Kadal","latin":"Eutropis multifasciata","kelas":"Herpetofauna","iucn":"Least Concern","cites":"","enc":1,"years":["Y5"]},{"lokal":"Kura-kura","latin":"Cuora amboinensis","kelas":"Herpetofauna","iucn":"Critically Endangered","cites":"II","enc":1,"years":["Y5"]}]};
+window.__TANAMAN__={"plant":[{"year":"Y1","cycle":"2019/2020","target":4400,"replant":0,"totalTarget":null,"realisasi":2220,"live":0.5020026702269693,"dead":0.4979973297730307},{"year":"Y2","cycle":"2020/2021","target":6580,"replant":0,"totalTarget":6580,"realisasi":6733,"live":0.6598841526808258,"dead":0.3401158473191742},{"year":"Y3","cycle":"2021/2022","target":4400,"replant":2137,"totalTarget":6537,"realisasi":7000,"live":0.30214285714285716,"dead":0.6978571428571428},{"year":"Y4","cycle":"2022/2023","target":4400,"replant":4422,"totalTarget":8822,"realisasi":7500,"live":null,"dead":null},{"year":"Y5","cycle":"2023/2024","target":4400,"replant":1681,"totalTarget":6081,"realisasi":7500,"live":null,"dead":null}],"mon":[{"year":"Y1","tanam":2220,"hidup":1128,"mati":1119,"hilang":0,"totalMon":2247},{"year":"Y2","tanam":6733,"hidup":4443,"mati":2040,"hilang":0,"totalMon":6483},{"year":"Y3","tanam":7000,"hidup":2115,"mati":2675,"hilang":2210,"totalMon":7000},{"year":"Y4","tanam":7500,"hidup":7141,"mati":359,"hilang":null,"totalMon":7500}],"totalTarget":17600,"totalRealisasi":21870,"totalHidup":15931,"totalMati":6289};
 (function(){
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const D=window.__DATA__, M=window.__META__, DRILL=window.__DRILL__||{}, PH=window.__PHOTOS__||[];
@@ -842,10 +967,10 @@ window.__TRAINING__={"perYear":{"Y1":9,"Y2":6,"Y3":1,"Y4":6,"Y5":1,"Y6":3},"tota
   const L=M.ledger;
   const YEARS=['Y1','Y2','Y3','Y4','Y5','Y6'];
   const CYCLE={Y1:'2019/20',Y2:'2020/21',Y3:'2021/22',Y4:'2022/23',Y5:'2023/24',Y6:'2024/25'};
-  const VIEWNAMES={home:'Beranda',overview:'Ringkasan Eksekutif',activity:'Kegiatan & Jangkauan',gender:'Analisis Gender',training:'Pelatihan',growth:'Pertumbuhan & Retensi',kups:'Ekonomi KUPS',registry:'Registry Peserta',docs:'Dokumentasi'};
+  const VIEWNAMES={home:'Beranda',overview:'Ringkasan Eksekutif',activity:'Kegiatan & Jangkauan',gender:'Analisis Gender',training:'Pelatihan',growth:'Pertumbuhan & Retensi',kups:'Ekonomi KUPS',fauna:'Satwa Liar',flora:'Rehabilitasi Hutan',registry:'Registry Peserta',docs:'Dokumentasi'};
 
   /* ---------- navigation + slideshow ---------- */
-  const ORDER=['home','overview','activity','gender','training','growth','kups','registry','docs'];
+  const ORDER=['home','overview','activity','gender','training','growth','kups','fauna','flora','registry','docs'];
   let curView='home';
   function go(view){
     if(!ORDER.includes(view)) return;
@@ -1607,6 +1732,130 @@ window.__TRAINING__={"perYear":{"Y1":9,"Y2":6,"Y3":1,"Y4":6,"Y5":1,"Y6":3},"tota
     renderTrain();
   }
 
+  /* ====================================================
+     FAUNA — Satwa
+  ==================================================== */
+  const FA=window.__FAUNA__;
+  if(FA){
+    const CLSCOL={'Aves':'#4f9bbf','Mamalia':'#16412a','Herpetofauna':'#caa24a','Antropoda':'#c06a3a'};
+    const IUCNCOL={'Critically Endangered':'#a02020','Endangered':'#c06a3a','Vulnerable':'#caa24a','Near Threatened':'#8f9e5a','Least Concern':'#3a8a5b'};
+    const IUCN_ID={'Critically Endangered':'Kritis (CR)','Endangered':'Terancam (EN)','Vulnerable':'Rentan (VU)','Near Threatened':'Hampir Terancam (NT)','Least Concern':'Risiko Rendah (LC)'};
+    // species per year
+    if($('#faunaYearChart')){
+      barChart($('#faunaYearChart'), FA.years.map(y=>({k:FA.yshort[y],s:y.split('/')[0],v:FA.sppByYear[y]})), {c1:'#4fa36c',c2:'#16412a'});
+    }
+    // class donut
+    if($('#faunaClassDonut')){
+      const segs=Object.keys(FA.classDist).sort((a,b)=>FA.classDist[b]-FA.classDist[a]).map(c=>({l:c,v:FA.classDist[c],c:CLSCOL[c]||'#999'}));
+      donutGeneric($('#faunaClassDonut'), segs, FA.totalSpecies, 'SPESIES');
+    }
+    // IUCN bars
+    if($('#iucnBars')){
+      const order=['Critically Endangered','Endangered','Vulnerable','Near Threatened','Least Concern'];
+      const max=Math.max(1,...order.map(k=>FA.iucnDist[k]||0));
+      $('#iucnBars').innerHTML=order.filter(k=>FA.iucnDist[k]).map(k=>`<div class="catrow"><div class="cl">${IUCN_ID[k]}</div><div class="ct"><div style="width:0;background:${IUCNCOL[k]}" data-w="${Math.round((FA.iucnDist[k]||0)/max*100)}"></div></div><div class="cv">${FA.iucnDist[k]||0}</div></div>`).join('');
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{$$('#iucnBars .ct>div').forEach(d=>d.style.width=d.dataset.w+'%');}));
+    }
+    // species table with search + filter
+    let faC='all', faT='';
+    const threatSet=new Set(['Critically Endangered','Endangered','Vulnerable']);
+    function renderFauna(){
+      const t=faT.trim().toLowerCase();
+      let items=FA.species.filter(s=>{
+        if(faC==='terancam'){if(!threatSet.has(s.iucn))return false;}
+        else if(faC!=='all'){if(s.kelas!==faC)return false;}
+        if(t&&!(s.lokal.toLowerCase().includes(t)||(s.latin||'').toLowerCase().includes(t)))return false;
+        return true;
+      });
+      $('#faunaCount').textContent=`${items.length} dari ${FA.totalSpecies} spesies`;
+      const tb=$('#faunaTable tbody');
+      if(!items.length){tb.innerHTML='<tr><td colspan="7" class="det-empty">Tidak ada spesies yang cocok.</td></tr>';return;}
+      tb.innerHTML=items.map(s=>{
+        const col=IUCNCOL[s.iucn]||'#999';
+        const badge=s.iucn?`<span style="display:inline-block;font-size:11px;font-weight:600;color:${col};background:${col}1a;padding:2px 8px;border-radius:6px">${IUCN_ID[s.iucn]||s.iucn}</span>`:'—';
+        const cites=s.cites?`<span class="mono" style="font-size:11px">App. ${esc(s.cites)}</span>`:'—';
+        const yrs=(s.years||[]).map(y=>`<span class="yrtag">${y}</span>`).join('');
+        return `<tr><td class="namecell">${esc(s.lokal)}</td><td class="rolecell" style="font-style:italic">${esc(s.latin)||'—'}</td><td>${esc(s.kelas)}</td><td>${badge}</td><td>${cites}</td><td class="num">${s.enc}</td><td>${yrs}</td></tr>`;
+      }).join('');
+    }
+    $('#faunaSearch')&&$('#faunaSearch').addEventListener('input',e=>{faT=e.target.value;renderFauna();});
+    $$('#faunaChips .chip').forEach(c=>c.addEventListener('click',()=>{$$('#faunaChips .chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');faC=c.dataset.c;renderFauna();}));
+    renderFauna();
+  }
+
+  /* ====================================================
+     FLORA — Tanaman/Rehabilitasi
+  ==================================================== */
+  const TN=window.__TANAMAN__;
+  if(TN){
+    // grouped target vs realisasi
+    if($('#plantChart')){
+      groupedBars($('#plantChart'), TN.plant.map(p=>({k:p.year,a:p.target||0,b:p.realisasi||0})), ['var(--moss)','var(--forest)']);
+    }
+    // survival rate (% hidup) per year from monitoring
+    if($('#survivalChart')){
+      const surv=TN.mon.map(m=>({k:m.year,v:m.totalMon?Math.round(m.hidup/m.totalMon*100):0}));
+      hbarPct($('#survivalChart'), surv, {max:100,fmt:v=>v+'%',rowH:42,padR:70});
+    }
+    // monitoring stacked (hidup/mati/hilang)
+    if($('#monChart')){
+      stackedBars($('#monChart'), TN.mon.map(m=>({k:m.year,parts:[m.hidup||0,m.mati||0,m.hilang||0]})), ['var(--forest)','var(--clay)','var(--faint)']);
+    }
+    // table
+    if($('#plantTable tbody')){
+      const tb=$('#plantTable tbody');
+      TN.plant.forEach(p=>{
+        const mon=TN.mon.find(m=>m.year===p.year);
+        const hidup=mon?mon.hidup:null, mati=mon?mon.mati:null;
+        const pctH=mon&&mon.totalMon?Math.round(mon.hidup/mon.totalMon*100)+'%':'—';
+        tb.insertAdjacentHTML('beforeend',`<tr><td><b>${p.year}</b> · ${p.cycle}</td><td class="num">${p.target?nf(p.target):'—'}</td><td class="num">${p.replant?nf(p.replant):'—'}</td><td class="num">${p.realisasi?nf(p.realisasi):'—'}</td><td class="num">${hidup!=null?nf(hidup):'—'}</td><td class="num">${mati!=null?nf(mati):'—'}</td><td class="num">${pctH}</td></tr>`);
+      });
+      tb.insertAdjacentHTML('beforeend',`<tr class="total"><td>TOTAL</td><td class="num">${nf(TN.totalTarget)}</td><td class="num">—</td><td class="num">${nf(TN.totalRealisasi)}</td><td class="num">${nf(TN.totalHidup)}</td><td class="num">${nf(TN.totalMati)}</td><td class="num">—</td></tr>`);
+    }
+  }
+
+  /* grouped bars (2 series) */
+  function groupedBars(mount, data, colors){
+    const W=560,H=300,padL=46,padR=20,padT=28,padB=46;
+    const cw=W-padL-padR,ch=H-padT-padB;
+    const max=Math.max(...data.flatMap(d=>[d.a,d.b]))*1.12;
+    const s=svg(W,H);mount.innerHTML='';mount.appendChild(s);
+    for(let i=0;i<=4;i++){const y=padT+ch-(ch*i/4);el('line',{x1:padL,y1:y,x2:W-padR,y2:y,class:'grid-line'},s);el('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axis-label'},s).textContent=Math.round(max*i/4);}
+    const grp=cw/data.length, bw=Math.min(22,grp*0.3);
+    data.forEach((d,i)=>{
+      const cx=padL+grp*i+grp/2;
+      [[d.a,colors[0],-bw-2],[d.b,colors[1],2]].forEach(([v,col,off])=>{
+        const bh=Math.max(2,v/max*ch),y=padT+ch-bh;
+        const r=el('rect',{x:cx+off,y:padT+ch,width:bw,height:0,rx:5,fill:col},s);
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{r.style.transition='all .9s cubic-bezier(.22,1,.36,1)';r.setAttribute('y',y);r.setAttribute('height',bh);}));
+        el('text',{x:cx+off+bw/2,y:y-6,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':10,'font-weight':600,fill:'#2e3d33'},s).textContent=nf(v);
+      });
+      el('text',{x:cx,y:H-padB+22,'text-anchor':'middle',class:'x-label'},s).textContent=d.k;
+    });
+  }
+  /* stacked bars (n series) */
+  function stackedBars(mount, data, colors){
+    const W=560,H=300,padL=46,padR=20,padT=28,padB=46;
+    const cw=W-padL-padR,ch=H-padT-padB;
+    const max=Math.max(...data.map(d=>d.parts.reduce((a,b)=>a+b,0)))*1.12;
+    const s=svg(W,H);mount.innerHTML='';mount.appendChild(s);
+    for(let i=0;i<=4;i++){const y=padT+ch-(ch*i/4);el('line',{x1:padL,y1:y,x2:W-padR,y2:y,class:'grid-line'},s);el('text',{x:padL-8,y:y+3,'text-anchor':'end',class:'axis-label'},s).textContent=Math.round(max*i/4);}
+    const grp=cw/data.length, bw=Math.min(44,grp*0.5);
+    data.forEach((d,i)=>{
+      const x=padL+grp*i+(grp-bw)/2;let acc=0;
+      d.parts.forEach((v,pi)=>{
+        const bh=v/max*ch;const y=padT+ch-acc-bh;
+        const r=el('rect',{x,y:padT+ch-acc,width:bw,height:0,rx:pi===0?5:0,fill:colors[pi]},s);
+        const yy=y,hh=bh;
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{r.style.transition='all .9s cubic-bezier(.22,1,.36,1)';r.setAttribute('y',yy);r.setAttribute('height',hh);}));
+        acc+=bh;
+      });
+      const tot=d.parts.reduce((a,b)=>a+b,0);
+      el('text',{x:x+bw/2,y:padT+ch-acc-8,'text-anchor':'middle','font-family':'JetBrains Mono','font-size':11,'font-weight':600,fill:'#0c2a18'},s).textContent=nf(tot);
+      el('text',{x:x+bw/2,y:H-padB+22,'text-anchor':'middle',class:'x-label'},s).textContent=d.k;
+    });
+  }
+
   /* kick off animations */
   animateCounts();
   revealInit($('#home'));
@@ -1617,6 +1866,18 @@ window.__TRAINING__={"perYear":{"Y1":9,"Y2":6,"Y3":1,"Y4":6,"Y5":1,"Y6":3},"tota
     const lb=$('#lbImg');lb.src='petanl.png';$('#lbCap').innerHTML='<b>Peta Kawasan Hutan Desa Nanga Lauk</b>Skala 1:25.000 · WGS 1984 49N';
     $('#lbPrev').style.display='none';$('#lbNext').style.display='none';
     $('#lightbox').classList.add('on');
+  });}
+  // map: sebaran satwa
+  const faunaMap=$('#faunaMapImg');
+  if(faunaMap){faunaMap.parentElement.addEventListener('click',()=>{
+    $('#lbImg').src='sebaran_satwa.png';$('#lbCap').innerHTML='<b>Peta Sebaran Satwa berdasarkan Status IUCN</b>Hutan Desa Nanga Lauk · Program SCCM 2024–2025';
+    $('#lbPrev').style.display='none';$('#lbNext').style.display='none';$('#lightbox').classList.add('on');
+  });}
+  // map: area penanaman
+  const floraMap=$('#floraMapImg');
+  if(floraMap){floraMap.parentElement.addEventListener('click',()=>{
+    $('#lbImg').src='peta_tanaman.png';$('#lbCap').innerHTML='<b>Peta Area Penanaman</b>LPHD Lauk Bersatu · Program SCCM 2019–2024 · Skala 1:10.000';
+    $('#lbPrev').style.display='none';$('#lbNext').style.display='none';$('#lightbox').classList.add('on');
   });}
   // restore nav arrows when opening gallery
   const _openLB=openLB;
