@@ -821,6 +821,18 @@ tr.total td.num{color:#fff}
         </div>
 
         <div class="panel">
+          <div class="panel-head"><div><h3>Peta Sebaran Satwa</h3><div class="sub">Titik perjumpaan satwa menurut status konservasi IUCN · Program SCCM 2024–2025</div></div><span class="tag">WGS 1984 · 49N</span></div>
+          <div class="mapwrap" id="faunaMapWrap"><img src="sebaran_satwa.png" alt="Peta Sebaran Satwa Nanga Lauk" loading="lazy" id="faunaMapImg"></div>
+          <div class="legend" style="margin-top:14px">
+            <span><i style="background:#ffffff;border:1px solid #888"></i>LC · Risiko Rendah</span>
+            <span><i style="background:#2b6cd4"></i>NT · Hampir Terancam</span>
+            <span><i style="background:#e8c020"></i>EN · Terancam</span>
+            <span><i style="background:#3aaa35"></i>VU · Rentan</span>
+            <span><i style="background:#d11a1a"></i>CR · Kritis</span>
+          </div>
+        </div>
+
+        <div class="panel">
           <div class="panel-head"><div><h3>Daftar Spesies Satwa</h3><div class="sub">Cari nama lokal atau ilmiah · saring berdasarkan kelas</div></div><span class="tag" id="faunaCount"></span></div>
           <div class="toolbar">
             <div class="search-box" style="flex:1;min-width:240px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="faunaSearch" type="text" placeholder="Cari nama satwa… (mis. bekantan, beruang, enggang)" autocomplete="off"></div>
@@ -882,6 +894,20 @@ tr.total td.num{color:#fff}
             <span><i style="background:#9b2ad8"></i>Titik Tanam Y3</span>
             <span><i style="background:#e0bd2a"></i>Titik Tanam Y4</span>
             <span><i style="background:#3a8a5b"></i>Titik Tanam Y5</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h3>Peta Lokasi Penanaman</h3><div class="sub">Blok penanaman & titik koordinat per tahun · Program SCCM 2019–2024</div></div><span class="tag">Skala 1:10.000</span></div>
+          <div class="mapwrap" id="plantMapWrap"><img src="peta_tanaman.png" alt="Peta Lokasi Penanaman Nanga Lauk" loading="lazy" id="plantMapImg"></div>
+          <div class="legend" style="margin-top:14px">
+            <span><i style="background:#e8762a"></i>Koordinat Y1</span>
+            <span><i style="background:#2b6cd4"></i>Koordinat Y2</span>
+            <span><i style="background:#9b30c0"></i>Koordinat Y3</span>
+            <span><i style="background:#e8c020"></i>Koordinat Y4</span>
+            <span><i style="background:#3aaa35"></i>Koordinat Y5</span>
+            <span><i style="background:#1f6b1f"></i>Hutan lindung</span>
+            <span><i style="background:#9bd62a"></i>Hutan produksi terbatas</span>
           </div>
         </div>
 
@@ -1874,7 +1900,7 @@ window.__TANAMAN__={"plant":[{"year":"Y1","cycle":"2019/2020","target":4400,"rep
     $('#lbPrev').style.display='none';$('#lbNext').style.display='none';$('#lightbox').classList.add('on');
   });}
   // map: area penanaman
-  const floraMap=$('#floraMapImg');
+  const floraMap=$('#plantMapImg');
   if(floraMap){floraMap.parentElement.addEventListener('click',()=>{
     $('#lbImg').src='peta_tanaman.png';$('#lbCap').innerHTML='<b>Peta Area Penanaman</b>LPHD Lauk Bersatu · Program SCCM 2019–2024 · Skala 1:10.000';
     $('#lbPrev').style.display='none';$('#lbNext').style.display='none';$('#lightbox').classList.add('on');
